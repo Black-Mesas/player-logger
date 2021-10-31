@@ -3,8 +3,13 @@ local players = peripheral.find("playerDetector")
 
 assert(chat,"No chatbox.")
 assert(players,"No player detector.")
+assert(fs.exists("/owner"), "No owner found.")
 
-local owner = "THKY"
+local ownerFile = io.open("/owner", "r")
+local owner = ownerFile:read()
+
+ownerFile:close()
+
 local range = 16
 local last = {}
 
@@ -39,7 +44,7 @@ while true do
     for _,player in pairs(near) do
         local pass = true
         
-        if player == "THKY" then
+        if player == owner then
             pass = false
         end
         
