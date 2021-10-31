@@ -1,2 +1,3 @@
 # player-logger
-Basic player detector and logger.
+Requires a Player Detector and Chat Box <br>
+to function.
