@@ -5,9 +5,10 @@ assert(chat,"No chatbox.")
 assert(players,"No player detector.")
 assert(fs.exists("/owner"), "No owner found.")
 
-local ownerFile = fs.open("/owner", "r")
-local owner = string.trim(ownerFile.readAll())
-ownerFile.close()
+local ownerFile = io.open("/owner", "r")
+local owner = ownerFile:read()
+
+ownerFile:close()
 
 local range = 16
 local last = {}
