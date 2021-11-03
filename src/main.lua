@@ -3,14 +3,18 @@ local players = peripheral.find("playerDetector")
 
 assert(chat,"No chatbox.")
 assert(players,"No player detector.")
-assert(fs.exists("/owner"), "No owner found.")
+assert(fs.exists("/owner"),"Owner file is missing.")
+assert(fs.exists("/distance"),"Distance file is missing.")
 
-local ownerFile = io.open("/owner", "r")
-local owner = ownerFile:read()
+local ownerConfig = io.open("/owner","r")
+local distanceConfig = io.open("/distance","r")
 
-ownerFile:close()
+local owner = ownerConfig:read()
+local range = tonumber(distanceConfig:read())
 
-local range = 16
+ownerConfig:close()
+distanceConfig:close()
+
 local last = {}
 
 local function message(text,name)
